@@ -9,10 +9,14 @@
 # Then open: http://127.0.0.1:8050
 # =============================================================================
 
+import os
 import pandas as pd
 from datetime import timedelta
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
+
+load_dotenv()
 import dash
 from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output, State
@@ -22,7 +26,7 @@ import plotly.graph_objects as go
 # CONFIG
 # =============================================================================
 DB_USERNAME = "postgres.ttntqvcomspvbkdumfvx"
-DB_PASSWORD = "Tesla2026sentiment"
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "Tesla2026sentiment")
 DB_HOST     = "aws-1-us-east-1.pooler.supabase.com"
 DB_PORT     = 6543
 DB_NAME     = "postgres"
@@ -246,7 +250,7 @@ app.layout = html.Div(
                     dcc.Checklist(id="show-events",
                         options=[{"label": "  Show Tesla events", "value": "show"}],
                         value=["show"],
-                        style={"color": SEC, "fontSize": "12px"})
+                        style={"color": SEC, "fontSize": "13px"})
                 ])
             ]),
 
@@ -501,18 +505,37 @@ def brand_chart(brands, start, end):
     sm = f.groupby("brand")["compound"].mean().reset_index()
     sm.columns = ["brand", "avg"]
     sm = sm.sort_values("avg")
-    fig = go.Figure(go.Bar(
-        x=sm["avg"], y=sm["brand"], orientation="h",
-        marker_color=[BRANDS[b]["color"] for b in sm["brand"]],
-        marker_opacity=0.85,
-        text=sm["avg"].round(3), textposition="outside",
-        textfont=dict(size=11, color=SEC),
-    ))
+
+    # Dynamic height matching sentiment mix chart
+    h = max(220, len(brands) * 48)
+
+    fig = go.Figure()
+
+    for _, row in sm.iterrows():
+        color = BRANDS[row["brand"]]["color"]
+        fig.add_trace(go.Bar(
+            x=[row["avg"]],
+            y=[row["brand"]],
+            orientation="h",
+            marker_color=color,
+            marker_opacity=0.85,
+            text=[str(round(row["avg"], 3))],
+            textposition="outside",
+            textfont=dict(size=11, color=SEC),
+            showlegend=False,
+            width=0.5
+        ))
+
     fig.add_vline(x=0, line_color=BORDER, line_width=1)
-    fig = base_fig(fig, height=max(180, len(sm) * 48))
-    fig.update_layout(showlegend=False,
+    fig = base_fig(fig, height=h)
+    fig.update_layout(
+        showlegend=False,
+        barmode="relative",
         xaxis=dict(range=[-0.6, 0.6], gridcolor=GRID,
-                   tickfont=dict(color=SEC, size=11)))
+                   tickfont=dict(color=SEC, size=11)),
+        yaxis=dict(categoryorder="array",
+                   categoryarray=sm["brand"].tolist())
+    )
     return fig
 
 
@@ -538,7 +561,8 @@ def mix_chart(brands, start, end):
             textfont=dict(size=10, color="white")
         ))
     fig = base_fig(fig, height=max(220, len(brands) * 48))
-    fig.update_layout(barmode="stack",
+    fig.update_layout(
+        barmode="stack",
         yaxis=dict(ticksuffix="%", gridcolor=GRID),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0))
     return fig
