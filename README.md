@@ -114,11 +114,11 @@ ev-sentiment-intelligence/
 - **Tesla events toggle** — show/hide event markers on trend chart
 
 ### Charts
-- 📈 **Daily Sentiment Trend** — line chart with Tesla event overlays
-- 📊 **Brand Avg Sentiment** — ranked horizontal bar chart
-- 🥧 **Sentiment Mix** — stacked bar showing sentiment breakdown per brand
-- 📦 **Article Volume** — total article count per brand
-- 🔍 **Sentiment by Topic** — compound score per search query
+- **Daily Sentiment Trend** — line chart with Tesla event overlays
+- **Brand Avg Sentiment** — ranked horizontal bar chart
+- **Sentiment Mix** — stacked bar showing sentiment breakdown per brand
+- **Article Volume** — total article count per brand
+- **Sentiment by Topic** — compound score per search query
 
 ### KPI Cards
 - Total articles · Positive % · Negative % · Avg Score · Top Brand
