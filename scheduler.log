@@ -1,0 +1,29 @@
+2026-06-05 16:15:21  [INFO]  Tesla ETL Scheduler started
+2026-06-05 16:15:21  [INFO]  ETL script : /Users/michaelchen/Desktop/UofL_Pipelines/tesla_etl_final.py
+2026-06-05 16:15:21  [INFO]  Scheduled  : daily at 06:00
+2026-06-05 16:15:21  [INFO]  Next run   : today at 06:00 (or tomorrow if past that time)
+2026-06-05 16:15:21  [INFO]  Press Ctrl+C to stop
+2026-06-05 16:15:21  [INFO]  --------------------------------------------------
+2026-06-05 16:15:21  [INFO]  Running ETL now on startup...
+2026-06-05 16:15:21  [INFO]  ==================================================
+2026-06-05 16:15:21  [INFO]  Starting scheduled ETL run...
+2026-06-05 16:15:21  [INFO]  ==================================================
+2026-06-05 16:15:34  [INFO]  ETL completed successfully!
+2026-06-05 16:15:34  [INFO]    2026-06-05 16:15:33  [INFO]      Tesla | articles=378 | avg_sentiment=0.0941 | positive=50.5%
+2026-06-05 16:15:34  [INFO]    2026-06-05 16:15:33  [INFO]  ============================================================
+2026-06-05 16:15:34  [INFO]    2026-06-05 16:15:33  [INFO]  PIPELINE COMPLETE - 11s elapsed
+2026-06-05 16:15:34  [INFO]    2026-06-05 16:15:34  [INFO]  Total articles processed: 749
+2026-06-05 16:15:34  [INFO]    2026-06-05 16:15:34  [INFO]  ============================================================
+2026-06-05 16:35:44  [INFO]  Scheduler started — running ETL daily at 06:00
+2026-06-05 16:35:44  [INFO]  ETL script: /Users/michaelchen/Desktop/UofL_Pipelines/Pipelines_Project/tesla_etl_final.py
+2026-06-05 16:35:44  [INFO]  Press Ctrl+C to stop
+2026-06-05 16:35:44  [INFO]  --------------------------------------------------
+2026-06-05 16:35:44  [INFO]  ==================================================
+2026-06-05 16:35:44  [INFO]  Starting ETL run at 2026-06-05 16:35:44
+2026-06-05 16:35:44  [INFO]  ==================================================
+2026-06-05 16:35:58  [INFO]  ETL completed successfully!
+2026-06-05 16:35:58  [INFO]    2026-06-05 16:35:58  [INFO]      Tesla | articles=380 | avg_sentiment=0.0896 | positive=50.3%
+2026-06-05 16:35:58  [INFO]    2026-06-05 16:35:58  [INFO]  ============================================================
+2026-06-05 16:35:58  [INFO]    2026-06-05 16:35:58  [INFO]  PIPELINE COMPLETE - 12s elapsed
+2026-06-05 16:35:58  [INFO]    2026-06-05 16:35:58  [INFO]  Total articles processed: 751
+2026-06-05 16:35:58  [INFO]    2026-06-05 16:35:58  [INFO]  ============================================================
