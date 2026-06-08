@@ -1,0 +1,9 @@
+dash
+plotly
+pandas
+sqlalchemy
+psycopg2-binary
+newsapi-python
+vaderSentiment
+schedule
+python-dotenv
