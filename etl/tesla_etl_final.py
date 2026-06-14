@@ -15,6 +15,7 @@
 # =============================================================================
 # IMPORTS
 # =============================================================================
+import os
 import sys
 import logging
 import hashlib
@@ -35,10 +36,10 @@ from sqlalchemy.exc import SQLAlchemyError
 NEWS_API_KEY = "38309e2f905848baacbe0d1741f8d318"
 
 # Supabase connection parameters
-DB_USERNAME = "postgres"
-DB_PASSWORD = "Tesla2026sentiment"
-DB_HOST     = "db.ttntqvcomspvbkdumfvx.supabase.co"
-DB_PORT     = 5432
+DB_USERNAME = "postgres.ttntqvcomspvbkdumfvx"
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "Tesla2026sentiment")
+DB_HOST     = "aws-1-us-east-1.pooler.supabase.com"
+DB_PORT     = 6543
 DB_NAME     = "postgres"
 
 # Each brand maps to a list of search terms

@@ -1533,3 +1533,200 @@
 2026-06-08 15:07:27  [INFO]  PIPELINE COMPLETE - 14s elapsed
 2026-06-08 15:07:27  [INFO]  Total articles processed: 745
 2026-06-08 15:07:27  [INFO]  ============================================================
+2026-06-10 17:42:50  [INFO]  ============================================================
+2026-06-10 17:42:50  [INFO]  TESLA EV BRAND SENTIMENT ETL PIPELINE - START
+2026-06-10 17:42:50  [INFO]  Run timestamp: 2026-06-10T21:42:50.253430+00:00
+2026-06-10 17:42:50  [INFO]  ============================================================
+2026-06-10 17:42:50  [INFO]  Initializing clients...
+2026-06-10 17:42:50  [INFO]    NewsAPI client initialized
+2026-06-10 17:42:50  [INFO]    Supabase engine initialized
+2026-06-10 17:42:51  [INFO]    Supabase connection test: OK
+2026-06-10 17:42:51  [INFO]  ============================================================
+2026-06-10 17:42:51  [INFO]  STAGE 1: EXTRACTION
+2026-06-10 17:42:51  [INFO]  ============================================================
+2026-06-10 17:42:51  [INFO]  Fetching articles for brand: Tesla
+2026-06-10 17:42:52  [INFO]    [Tesla electric car] -> 97 articles
+2026-06-10 17:42:52  [INFO]    [Elon Musk] -> 96 articles
+2026-06-10 17:42:52  [INFO]    [Tesla Model 3] -> 98 articles
+2026-06-10 17:42:53  [INFO]    [Tesla Model Y] -> 96 articles
+2026-06-10 17:42:53  [INFO]    [Tesla Cybertruck] -> 95 articles
+2026-06-10 17:42:53  [INFO]  Fetching articles for brand: Hyundai
+2026-06-10 17:42:54  [INFO]    [Hyundai Ioniq] -> 86 articles
+2026-06-10 17:42:54  [INFO]    [Hyundai Ioniq 5] -> 73 articles
+2026-06-10 17:42:55  [INFO]    [Hyundai EV] -> 97 articles
+2026-06-10 17:42:55  [INFO]  Fetching articles for brand: Rivian
+2026-06-10 17:42:55  [INFO]    [Rivian electric] -> 89 articles
+2026-06-10 17:42:55  [INFO]    [Rivian R1T] -> 22 articles
+2026-06-10 17:42:56  [INFO]    [Rivian R1S] -> 26 articles
+2026-06-10 17:42:56  [INFO]  Fetching articles for brand: Ford EV
+2026-06-10 17:42:56  [INFO]    [Ford Mustang Mach-E] -> 24 articles
+2026-06-10 17:42:57  [INFO]    [Ford electric vehicle] -> 98 articles
+2026-06-10 17:42:57  [INFO]  Fetching articles for brand: BYD
+2026-06-10 17:42:57  [INFO]    [BYD electric car] -> 93 articles
+2026-06-10 17:42:57  [INFO]    [BYD EV] -> 98 articles
+2026-06-10 17:42:57  [INFO]  Extraction complete. Total raw articles: 1188
+2026-06-10 17:42:57  [INFO]  ============================================================
+2026-06-10 17:42:57  [INFO]  STAGE 2: TRANSFORMATION & CLEANING
+2026-06-10 17:42:57  [INFO]  ============================================================
+2026-06-10 17:42:58  [INFO]  Transformation complete. Clean articles: 1188
+2026-06-10 17:42:58  [INFO]  ============================================================
+2026-06-10 17:42:58  [INFO]  STAGE 3: DATA VALIDATION & QUALITY CHECKS
+2026-06-10 17:42:58  [INFO]  ============================================================
+2026-06-10 17:42:58  [INFO]    [PASS] Row count: 1188 rows
+2026-06-10 17:42:58  [INFO]    [PASS] Schema check: All required columns present
+2026-06-10 17:42:58  [INFO]    [PASS] No nulls in article_id
+2026-06-10 17:42:58  [INFO]    [PASS] No nulls in brand
+2026-06-10 17:42:58  [INFO]    [PASS] No nulls in title
+2026-06-10 17:42:58  [INFO]    [PASS] No nulls in url
+2026-06-10 17:42:58  [INFO]    [PASS] No nulls in published_at
+2026-06-10 17:42:58  [INFO]    [PASS] No nulls in sentiment_label
+2026-06-10 17:42:58  [WARNING]    [WARN] 444 duplicate URLs - removing
+2026-06-10 17:42:58  [INFO]    Deduplicated. Remaining rows: 744
+2026-06-10 17:42:58  [INFO]    [PASS] No duplicate article_ids
+2026-06-10 17:42:58  [INFO]    [PASS] All compound scores within [-1.0, 1.0]
+2026-06-10 17:42:58  [INFO]    [PASS] All sentiment labels valid
+2026-06-10 17:42:58  [INFO]    [PASS] All 5 brands present
+2026-06-10 17:42:58  [INFO]    [INFO] Date range: 2026-05-10 to 2026-06-09
+2026-06-10 17:42:58  [INFO]  Validation complete. ALL CHECKS PASSED
+2026-06-10 17:42:58  [INFO]  Sentiment breakdown:
+2026-06-10 17:42:58  [INFO]    positive: 410 (55.1%)
+2026-06-10 17:42:58  [INFO]    negative: 202 (27.2%)
+2026-06-10 17:42:58  [INFO]    neutral: 132 (17.7%)
+2026-06-10 17:42:58  [INFO]  ============================================================
+2026-06-10 17:42:58  [INFO]  STAGE 4: DATABASE LOADING (INCREMENTAL)
+2026-06-10 17:42:58  [INFO]  ============================================================
+2026-06-10 17:42:58  [INFO]    Table tesla_sentiment.articles confirmed
+2026-06-10 17:42:58  [INFO]    Existing articles in DB: 1314
+2026-06-10 17:42:58  [INFO]    New articles to insert: 188
+2026-06-10 17:42:58  [INFO]    Insert complete. Total rows in DB: 1502
+2026-06-10 17:42:58  [INFO]    New rows added this run: 188
+2026-06-10 17:42:58  [INFO]  ============================================================
+2026-06-10 17:42:58  [INFO]  STAGE 5: ANALYTICS PREPARATION
+2026-06-10 17:42:58  [INFO]  ============================================================
+2026-06-10 17:42:59  [INFO]    brand_sentiment_summary: 5 rows written
+2026-06-10 17:43:00  [INFO]    daily_sentiment_trend: 116 rows written
+2026-06-10 17:43:00  [INFO]    Brand Sentiment Summary:
+2026-06-10 17:43:00  [INFO]      Rivian | articles=65 | avg_sentiment=0.2676 | positive=64.6%
+2026-06-10 17:43:00  [INFO]      BYD | articles=96 | avg_sentiment=0.2014 | positive=59.4%
+2026-06-10 17:43:00  [INFO]      Hyundai | articles=122 | avg_sentiment=0.1937 | positive=55.7%
+2026-06-10 17:43:00  [INFO]      Ford EV | articles=74 | avg_sentiment=0.191 | positive=55.4%
+2026-06-10 17:43:00  [INFO]      Tesla | articles=387 | avg_sentiment=0.1091 | positive=52.2%
+2026-06-10 17:43:00  [INFO]  ============================================================
+2026-06-10 17:43:00  [INFO]  PIPELINE COMPLETE - 10s elapsed
+2026-06-10 17:43:00  [INFO]  Total articles processed: 744
+2026-06-10 17:43:00  [INFO]  ============================================================
+2026-06-14 15:02:05  [INFO]  ============================================================
+2026-06-14 15:02:05  [INFO]  TESLA EV BRAND SENTIMENT ETL PIPELINE - START
+2026-06-14 15:02:05  [INFO]  Run timestamp: 2026-06-14T19:02:05.325120+00:00
+2026-06-14 15:02:05  [INFO]  ============================================================
+2026-06-14 15:02:05  [INFO]  Initializing clients...
+2026-06-14 15:02:05  [INFO]    NewsAPI client initialized
+2026-06-14 15:02:05  [INFO]    Supabase engine initialized
+2026-06-14 15:02:05  [ERROR]  PIPELINE FAILED: (psycopg2.OperationalError) connection to server at "db.ttntqvcomspvbkdumfvx.supabase.co" (2600:1f18:38df:9501:e3b1:1f5a:e07b:76bc), port 5432 failed: No route to host
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-14 15:02:41  [INFO]  ============================================================
+2026-06-14 15:02:41  [INFO]  TESLA EV BRAND SENTIMENT ETL PIPELINE - START
+2026-06-14 15:02:41  [INFO]  Run timestamp: 2026-06-14T19:02:41.080558+00:00
+2026-06-14 15:02:41  [INFO]  ============================================================
+2026-06-14 15:02:41  [INFO]  Initializing clients...
+2026-06-14 15:02:41  [INFO]    NewsAPI client initialized
+2026-06-14 15:02:41  [INFO]    Supabase engine initialized
+2026-06-14 15:02:41  [ERROR]  PIPELINE FAILED: (psycopg2.OperationalError) connection to server at "db.ttntqvcomspvbkdumfvx.supabase.co" (2600:1f18:38df:9501:e3b1:1f5a:e07b:76bc), port 5432 failed: No route to host
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-14 15:05:33  [INFO]  ============================================================
+2026-06-14 15:05:33  [INFO]  TESLA EV BRAND SENTIMENT ETL PIPELINE - START
+2026-06-14 15:05:33  [INFO]  Run timestamp: 2026-06-14T19:05:33.896516+00:00
+2026-06-14 15:05:33  [INFO]  ============================================================
+2026-06-14 15:05:33  [INFO]  Initializing clients...
+2026-06-14 15:05:33  [INFO]    NewsAPI client initialized
+2026-06-14 15:05:33  [INFO]    Supabase engine initialized
+2026-06-14 15:05:34  [ERROR]  PIPELINE FAILED: (psycopg2.OperationalError) connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 6543 failed: FATAL:  (ENOIDENTIFIER) no tenant identifier provided (external_id or sni_hostname required)
+connection to server at "aws-1-us-east-1.pooler.supabase.com" (18.214.78.123), port 6543 failed: FATAL:  (ENOIDENTIFIER) no tenant identifier provided (external_id or sni_hostname required)
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-14 15:08:50  [INFO]  ============================================================
+2026-06-14 15:08:50  [INFO]  TESLA EV BRAND SENTIMENT ETL PIPELINE - START
+2026-06-14 15:08:50  [INFO]  Run timestamp: 2026-06-14T19:08:50.539613+00:00
+2026-06-14 15:08:50  [INFO]  ============================================================
+2026-06-14 15:08:50  [INFO]  Initializing clients...
+2026-06-14 15:08:50  [INFO]    NewsAPI client initialized
+2026-06-14 15:08:50  [INFO]    Supabase engine initialized
+2026-06-14 15:08:51  [INFO]    Supabase connection test: OK
+2026-06-14 15:08:51  [INFO]  ============================================================
+2026-06-14 15:08:51  [INFO]  STAGE 1: EXTRACTION
+2026-06-14 15:08:51  [INFO]  ============================================================
+2026-06-14 15:08:51  [INFO]  Fetching articles for brand: Tesla
+2026-06-14 15:08:52  [INFO]    [Tesla electric car] -> 95 articles
+2026-06-14 15:08:52  [INFO]    [Elon Musk] -> 97 articles
+2026-06-14 15:08:52  [INFO]    [Tesla Model 3] -> 96 articles
+2026-06-14 15:08:53  [INFO]    [Tesla Model Y] -> 96 articles
+2026-06-14 15:08:53  [INFO]    [Tesla Cybertruck] -> 92 articles
+2026-06-14 15:08:53  [INFO]  Fetching articles for brand: Hyundai
+2026-06-14 15:08:54  [INFO]    [Hyundai Ioniq] -> 90 articles
+2026-06-14 15:08:54  [INFO]    [Hyundai Ioniq 5] -> 77 articles
+2026-06-14 15:08:54  [INFO]    [Hyundai EV] -> 96 articles
+2026-06-14 15:08:54  [INFO]  Fetching articles for brand: Rivian
+2026-06-14 15:08:55  [INFO]    [Rivian electric] -> 90 articles
+2026-06-14 15:08:55  [INFO]    [Rivian R1T] -> 21 articles
+2026-06-14 15:08:56  [INFO]    [Rivian R1S] -> 23 articles
+2026-06-14 15:08:56  [INFO]  Fetching articles for brand: Ford EV
+2026-06-14 15:08:56  [INFO]    [Ford Mustang Mach-E] -> 23 articles
+2026-06-14 15:08:56  [INFO]    [Ford electric vehicle] -> 97 articles
+2026-06-14 15:08:56  [INFO]  Fetching articles for brand: BYD
+2026-06-14 15:08:57  [INFO]    [BYD electric car] -> 90 articles
+2026-06-14 15:08:57  [INFO]    [BYD EV] -> 94 articles
+2026-06-14 15:08:57  [INFO]  Extraction complete. Total raw articles: 1177
+2026-06-14 15:08:57  [INFO]  ============================================================
+2026-06-14 15:08:57  [INFO]  STAGE 2: TRANSFORMATION & CLEANING
+2026-06-14 15:08:57  [INFO]  ============================================================
+2026-06-14 15:08:57  [INFO]  Transformation complete. Clean articles: 1177
+2026-06-14 15:08:57  [INFO]  ============================================================
+2026-06-14 15:08:57  [INFO]  STAGE 3: DATA VALIDATION & QUALITY CHECKS
+2026-06-14 15:08:57  [INFO]  ============================================================
+2026-06-14 15:08:57  [INFO]    [PASS] Row count: 1177 rows
+2026-06-14 15:08:57  [INFO]    [PASS] Schema check: All required columns present
+2026-06-14 15:08:57  [INFO]    [PASS] No nulls in article_id
+2026-06-14 15:08:57  [INFO]    [PASS] No nulls in brand
+2026-06-14 15:08:57  [INFO]    [PASS] No nulls in title
+2026-06-14 15:08:57  [INFO]    [PASS] No nulls in url
+2026-06-14 15:08:57  [INFO]    [PASS] No nulls in published_at
+2026-06-14 15:08:57  [INFO]    [PASS] No nulls in sentiment_label
+2026-06-14 15:08:57  [WARNING]    [WARN] 429 duplicate URLs - removing
+2026-06-14 15:08:57  [INFO]    Deduplicated. Remaining rows: 748
+2026-06-14 15:08:57  [INFO]    [PASS] No duplicate article_ids
+2026-06-14 15:08:57  [INFO]    [PASS] All compound scores within [-1.0, 1.0]
+2026-06-14 15:08:57  [INFO]    [PASS] All sentiment labels valid
+2026-06-14 15:08:57  [INFO]    [PASS] All 5 brands present
+2026-06-14 15:08:57  [INFO]    [INFO] Date range: 2026-05-13 to 2026-06-13
+2026-06-14 15:08:57  [INFO]  Validation complete. ALL CHECKS PASSED
+2026-06-14 15:08:57  [INFO]  Sentiment breakdown:
+2026-06-14 15:08:57  [INFO]    positive: 434 (58.0%)
+2026-06-14 15:08:57  [INFO]    negative: 186 (24.9%)
+2026-06-14 15:08:57  [INFO]    neutral: 128 (17.1%)
+2026-06-14 15:08:57  [INFO]  ============================================================
+2026-06-14 15:08:57  [INFO]  STAGE 4: DATABASE LOADING (INCREMENTAL)
+2026-06-14 15:08:57  [INFO]  ============================================================
+2026-06-14 15:08:57  [INFO]    Table tesla_sentiment.articles confirmed
+2026-06-14 15:08:58  [INFO]    Existing articles in DB: 1502
+2026-06-14 15:08:58  [INFO]    New articles to insert: 277
+2026-06-14 15:08:58  [INFO]    Insert complete. Total rows in DB: 1779
+2026-06-14 15:08:58  [INFO]    New rows added this run: 277
+2026-06-14 15:08:58  [INFO]  ============================================================
+2026-06-14 15:08:58  [INFO]  STAGE 5: ANALYTICS PREPARATION
+2026-06-14 15:08:58  [INFO]  ============================================================
+2026-06-14 15:08:59  [INFO]    brand_sentiment_summary: 5 rows written
+2026-06-14 15:09:00  [INFO]    daily_sentiment_trend: 117 rows written
+2026-06-14 15:09:00  [INFO]    Brand Sentiment Summary:
+2026-06-14 15:09:00  [INFO]      Rivian | articles=69 | avg_sentiment=0.2756 | positive=65.2%
+2026-06-14 15:09:00  [INFO]      Ford EV | articles=76 | avg_sentiment=0.2194 | positive=59.2%
+2026-06-14 15:09:00  [INFO]      Hyundai | articles=128 | avg_sentiment=0.1964 | positive=56.2%
+2026-06-14 15:09:00  [INFO]      BYD | articles=86 | avg_sentiment=0.179 | positive=61.6%
+2026-06-14 15:09:00  [INFO]      Tesla | articles=389 | avg_sentiment=0.1549 | positive=56.3%
+2026-06-14 15:09:00  [INFO]  ============================================================
+2026-06-14 15:09:00  [INFO]  PIPELINE COMPLETE - 9s elapsed
+2026-06-14 15:09:00  [INFO]  Total articles processed: 748
+2026-06-14 15:09:00  [INFO]  ============================================================
